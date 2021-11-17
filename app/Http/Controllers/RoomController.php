@@ -14,7 +14,8 @@ class RoomController extends Controller
      */
     public function index()
     {
-        return view('rooms.index');
+        $rooms = Room::all(); 
+        return view('rooms.index', compact('rooms'));
     }
 
     /**
@@ -37,7 +38,7 @@ class RoomController extends Controller
     {
         $room = $request->all();
         Room::create($room);
-        return redirect()->route('rooms.show');
+        return redirect()->route('salas.index');
     }
 
     /**
@@ -48,8 +49,8 @@ class RoomController extends Controller
      */
     public function show($id)
     {
-        $room = Room::all(); 
-        return view('rooms.show',  compact('rooms'));
+        $room = Room::where('id', $id)->first();
+        return view('rooms.show',  compact('room'));
     }
 
     /**
@@ -74,7 +75,7 @@ class RoomController extends Controller
     public function update(Request $request, $id)
     {
         Room::find($id)->update($request->all());
-        return redirect()->back();
+        return redirect()->route('salas.index');
     }
 
     /**
@@ -88,8 +89,6 @@ class RoomController extends Controller
         if (!$room = Room::find($id))
         $room->delete();
 
-        return redirect()->route('rooms.destroy');
-
-        echo "Sala excluída com sucesso!";
+        return redirect()->route('salas.index');
     }
 }

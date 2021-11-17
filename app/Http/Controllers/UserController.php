@@ -14,7 +14,8 @@ class UserController extends Controller
      */
     public function index()
     {
-        return view('users.index');
+        $users = User::all(); 
+        return view('users.index', compact('users'));
     }
 
     /**
@@ -35,7 +36,9 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $user = $request->all();
+        User::create($user);
+        return redirect()->route('usuarios.index');
     }
 
     /**
@@ -46,7 +49,7 @@ class UserController extends Controller
      */
     public function show($id)
     {
-        $user = User::all(); 
+        $user = User::where('id', $id)->first();
         return view('users.show',  compact('user'));
     }
 
@@ -72,7 +75,7 @@ class UserController extends Controller
     public function update(Request $request, $id)
     {
         User::find($id)->update($request->all());
-        return redirect()->back();
+        return redirect()->route('usuarios.index');
     }
 
     /**
@@ -86,8 +89,6 @@ class UserController extends Controller
         if (!$user = User::find($id))
         $user->delete();
 
-        return redirect()->route('users.destroy');
-
-        echo "Usuário excluído com sucesso!";
+        return redirect()->route('usuarios.index');
     }
 }

@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-Cadastrar salas  
+Cadastrar Sala
 @endsection    
 
 @section('content')
@@ -10,7 +10,7 @@ Cadastrar salas
 @csrf
     <div class="form-group mx-sm-3 mb-2">
         <label for="name" class="sr-only">Nome</label>
-        <input type="text" class="form-control rounded" id="name" name="name" placeholder="Ciências Humanas">
+        <input type="text" class="form-control rounded" id="name" name="name" placeholder="Ciências Humanas" value="{{ $room->name ?? old('name') }}">
     </div>
     <div class="form-group mx-sm-3 mb-2">
       <label for="number" class="sr-only">Numero</label>

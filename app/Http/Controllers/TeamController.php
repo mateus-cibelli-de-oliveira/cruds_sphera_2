@@ -14,7 +14,8 @@ class TeamController extends Controller
      */
     public function index()
     {
-        return view('teams.index');
+        $teams = Team::all(); 
+        return view('teams.index', compact('teams'));
     }
 
     /**
@@ -35,8 +36,9 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        $team = Team::create($request->all());
-        return redirect()->route('teams.show');
+        $team = $request->all();
+        Team::create($team);
+        return redirect()->route('turmas.index');
     }
 
     /**
@@ -47,8 +49,8 @@ class TeamController extends Controller
      */
     public function show($id)
     {
-        $team = Team::all(); 
-        return view('teams.show',  compact('teams'));
+        $team = Team::where('id', $id)->first();
+        return view('teams.show',  compact('team'));
     }
 
     /**
@@ -73,7 +75,7 @@ class TeamController extends Controller
     public function update(Request $request, $id)
     {
         Team::find($id)->update($request->all());
-        return redirect()->back();
+        return redirect()->route('turmas.index');
     }
 
     /**
@@ -87,8 +89,6 @@ class TeamController extends Controller
         if (!$team = Team::find($id))
         $team->delete();
 
-        return redirect()->route('teams.destroy');
-
-        echo "Turma excluída com sucesso!";
+        return redirect()->route('turmas.index');
     }
 }

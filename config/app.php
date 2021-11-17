@@ -165,6 +165,8 @@ return [
         /*
          * Package Service Providers...
          */
+        
+        // LaravelLegends\PtBrValidator\ValidatorProvider::class,
 
         /*
          * Application Service Providers...

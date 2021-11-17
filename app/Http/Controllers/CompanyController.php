@@ -14,7 +14,8 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        return view('companies.index');
+        $companies = Company::all(); 
+        return view('companies.index', compact('companies'));
     }
 
     /**
@@ -37,7 +38,7 @@ class CompanyController extends Controller
     {
         $company = $request->all();
         Company::create($company);
-        return redirect()->route('companies.show');
+        return redirect()->route('empresas.index');
     }
 
     /**
@@ -48,7 +49,7 @@ class CompanyController extends Controller
      */
     public function show($id)
     {
-        $company = Company::all(); 
+        $company = Company::where('id', $id)->first();
         return view('companies.show',  compact('company'));
     }
 
@@ -61,7 +62,7 @@ class CompanyController extends Controller
     public function edit($id)
     {
         $company = Company::where('id', $id)->first();
-        return view('rooms.edit', compact('company', 'id'));
+        return view('companies.edit', compact('company', 'id'));
     }
 
     /**
@@ -74,7 +75,7 @@ class CompanyController extends Controller
     public function update(Request $request, $id)
     {
         Company::find($id)->update($request->all());
-        return redirect()->back();
+        return redirect()->route('empresas.index');
     }
 
     /**
@@ -88,8 +89,6 @@ class CompanyController extends Controller
         if (!$company = Company::find($id))
         $company->delete();
 
-        return redirect()->route('companies.destroy');
-
-        echo "Empresa excluída com sucesso!";
+        return redirect()->route('empresas.index');
     }
 }
