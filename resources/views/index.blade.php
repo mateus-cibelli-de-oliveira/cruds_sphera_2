@@ -25,12 +25,12 @@
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 nounderline">Home</a>
+                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 nounderline mr-2">Home</a>
                     @else
-                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 nounderline">Log in</a>
+                        <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 nounderline mr-2">Log in</a>
 
                         @if (Route::has('register'))
-                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 nounderline">Register</a>
+                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 dark:text-gray-500 nounderline mr-2">Register</a>
                         @endif
                     @endauth
                 </div>
@@ -38,11 +38,11 @@
 
             <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
                 <div class="container-fluid">
-                  <a class="navbar-brand px-2" href="#">SPHERA_PRINCIPAL</a>
+                    <a class="navbar-brand px-2" href="#">SPHERA_PRINCIPAL</a>
                     <div class="collapse navbar-collapse">
                         <ul class="navbar-nav mr-auto">
                             <li class="nav-item">
-                              <a class="nav-link" href="{{ route('empresas.index') }}">Empresas</a>
+                                <a class="nav-link" href="{{ route('empresas.index') }}">Empresas</a>
                             </li>
                             <li class="nav-item">
                                 <a class="nav-link" href="{{ route('salas.index') }}">Salas</a>
@@ -55,7 +55,8 @@
                             </li>
                         </ul>
                     </div>
-                </div>
+                </div>  
             </nav>
+        </div>      
     </body>
 </html>
