@@ -37,12 +37,11 @@ Página Principal
 
             <tbody>
                 @foreach ($teams as $team)
-                    <tr>
-                        <td
-                            class="px-6 px-md-5 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">
+                    <tr class="whitespace-no-wrap border-b">
+                        <td class="px-6 px-md-5 py-4 text-blue-600 text-sm leading-5">
                             {{ $team->name }}
                         </td>
-                        <td class="px-6 px-md-5 py-4 whitespace-no-wrap border-b border-gray-500">
+                        <td class="px-6 px-md-5 py-4">
                             {{ $team->number }}
                         </td>
                         <select name="room_id" id="room_id" class="form-control mt-2">
@@ -55,11 +54,10 @@ Página Principal
                                 @endif
                             @endif
                         </select>
-                        <td
-                            class="px-6 px-md-5 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5 text-right">
+                        <td class="px-6 px-md-5 py-4 text-sm leading-5">
                             <a class="nav-link" href="{{ route('turmas.edit') }}">Atualizar Dados</a>
                             <a class="nav-link" href="{{ route('turmas.show') }}">Exibir Turma</a>
-                            <a href="{{ route('turmas.destroy', $team->id) }}">Deletar</a>
+                            <a class="nav-link" href="{{ route('turmas.destroy', $team->id) }}">Deletar</a>
                         </td>
                     </tr>
                 @endforeach

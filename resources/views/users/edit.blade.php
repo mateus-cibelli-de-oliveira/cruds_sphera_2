@@ -2,22 +2,20 @@
 
 @section('title')
 Atualizar Usuário
-@endsection    
+@endsection
 
 @section('content')
 
-<div class="container mt-40">
-    @foreach ($user)
+  <div class="container pt-20">
       <div class="mb-4">
-        <h1 class="d-flex justify-content-center text-3xl">Atualizar Usuário</h1>
+          <h1 class="d-flex justify-content-center text-3xl">Atualizar Usuário</h1>
       </div>
-      <div class="d-flex justify-content-center">
-        <form action="{{ route('usuarios.update', $user->user->id) }}" method="post" enctype="multipart/form-data">
-          @method('put')
-          @include('users.create')
-        </form>
+      <div class="d-flex justify-content-center pt-2">
+          <form action="{{ route('usuarios.update', $user->id) }}" method="post" enctype="multipart/form-data">
+              @method('put')
+              @include('users.form')
+          </form>
       </div>
-    @endforeach  
   </div>
 
-@endsection   
+@endsection

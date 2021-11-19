@@ -37,19 +37,17 @@ Página Principal
 
             <tbody>
                 @foreach ($rooms as $room)
-                    <tr>
-                        <td
-                            class="px-6 px-md-5 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5">
+                    <tr class="whitespace-no-wrap border-b">
+                        <td class="px-6 px-md-5 py-4 text-blue-600 text-sm leading-5">
                             {{ $room->name }}
                         </td>
-                        <td class="px-6 px-md-5 py-4 whitespace-no-wrap border-b border-gray-500">
+                        <td class="px-6 px-md-5 py-4">
                             {{ $room->number }}
                         </td>
-                        <td
-                            class="px-6 px-md-5 py-4 whitespace-no-wrap border-b text-blue-900 border-gray-500 text-sm leading-5 text-right">
+                        <td class="px-6 px-md-5 py-4 text-sm leading-5">
                             <a class="nav-link" href="{{ route('salas.edit') }}">Atualizar Dados</a>
                             <a class="nav-link" href="{{ route('salas.show') }}">Exibir Sala</a>
-                            <a href="{{ route('salas.destroy', $room->id) }}">Deletar</a>
+                            <a class="nav-link" href="{{ route('salas.destroy', $room->id) }}">Deletar</a>
                         </td>
                     </tr>
                 @endforeach

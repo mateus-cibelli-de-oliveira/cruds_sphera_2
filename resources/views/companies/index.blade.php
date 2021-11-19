@@ -38,22 +38,22 @@ Página Principal
             <tbody>
                 @foreach ($companies as $company)
                     <tr class="whitespace-no-wrap border-b">
-                        <td class="px-6 px-md-5 py-4 text-blue-900 border-gray-500 text-sm leading-5">
+                        <td class="px-6 px-md-5 py-4 text-blue-600 text-sm leading-5">
                             {{ $company->name }}
                         </td>
-                        <td class="px-6 px-md-5 py-4 border-gray-500">
+                        <td class="px-6 px-md-5 py-4">
                             {{ $company->cnpj }}
                         </td>
-                        <td class="px-6 px-md-4 py-4 border-gray-500">
+                        <td class="px-6 px-md-4 py-4">
                             <span class="d-flex">{{ $company->address }}</span>
                         </td>
-                        <td class="px-6 px-md-5 pt-2 text-blue-900 border-gray-500 text-sm leading-5 d-block">
+                        <td class="px-6 px-md-5 pt-2 text-sm leading-5 d-block">
                             <a class="nav-link" href="{{ route('empresas.edit', $company->id) }}">Atualizar Dados</a>
                         </td>
-                        <td class="px-6 px-md-5 text-blue-900 border-gray-500 text-sm leading-5 d-block">
+                        <td class="px-6 px-md-5 text-sm leading-5 d-block">
                             <a class="nav-link" href="{{ route('empresas.show', $company->id) }}">Exibir Empresa</a>
                         </td>    
-                        <td class="px-6 px-md-5 text-blue-900 border-gray-500 text-sm leading-5 d-block">
+                        <td class="px-6 px-md-5 text-sm leading-5 d-block">
                             <a class="nav-link" href="{{ route('empresas.destroy', $company->id) }}">Deletar</a>
                         </td>
                     </tr>
