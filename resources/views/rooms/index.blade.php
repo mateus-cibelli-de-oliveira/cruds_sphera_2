@@ -45,9 +45,13 @@ Página Principal
                             {{ $room->number }}
                         </td>
                         <td class="px-6 px-md-5 py-4 text-sm leading-5">
-                            <a class="nav-link" href="{{ route('salas.edit') }}">Atualizar Dados</a>
-                            <a class="nav-link" href="{{ route('salas.show') }}">Exibir Sala</a>
-                            <a class="nav-link" href="{{ route('salas.destroy', $room->id) }}">Deletar</a>
+                            <a class="nav-link" href="{{ route('salas.edit', $room->id) }}">Atualizar Dados</a>
+                            <a class="nav-link" href="{{ route('salas.show', $room->id) }}">Exibir Sala</a>
+                            <button class="nav-link" type="submit" form="delete{{$room->id}}" name="delete" value="{{ $room->id }}">Deletar</button>
+                            <form method="post" action="{{ route('salas.destroy', $room->id) }}" id="delete{{$room->id}}" class="form-delete-data">
+                                @csrf
+                                {{ method_field('DELETE') }}
+                            </form>
                         </td>
                     </tr>
                 @endforeach

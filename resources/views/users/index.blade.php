@@ -32,7 +32,7 @@ Página Principal
                 <th scope="col" class="px-md-5">Nome</th>
                 <th scope="col" class="px-md-5">E-mail</th>
                 <th scope="col" class="px-md-5">CPF</th>
-                <th scope="col" class="px-md-5">Ações</th>
+                <th scope="col" class="px-md-5 d-flex ml-4">Ações</th>
             </tr>
         </thead>
 
@@ -48,9 +48,13 @@ Página Principal
                     <td class="px-6 px-md-5 py-4">
                         {{ $user->cpf }}
                     </td>
-                    <td class="px-6 px-md-5 py-4 text-sm leading-5">
-                        <a class="nav-link" href="{{ route('usuarios.edit') }}">Atualizar Dados</a>
-                        <a class="nav-link" href="{{ route('usuarios.show') }}">Exibir Usuários</a>
+                    <td class="px-6 px-md-5 pt-2 text-sm leading-5 d-block">
+                        <a class="nav-link" href="{{ route('usuarios.edit', $user->id) }}">Atualizar Dados</a>
+                    </td>
+                    <td class="px-6 px-md-5 text-sm leading-5 d-block">
+                        <a class="nav-link" href="{{ route('usuarios.show', $user->id) }}">Exibir Usuários</a>
+                    </td>
+                    <td class="px-6 px-md-5 text-sm leading-5 d-block">
                         <a class="nav-link" href="{{ route('usuarios.destroy', $user->id) }}">Deletar</a>
                     </td>
                 </tr>

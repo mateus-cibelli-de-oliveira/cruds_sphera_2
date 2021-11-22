@@ -12,6 +12,7 @@ Atualizar Turma
       </div>
       <div class="d-flex justify-content-center">
           <form action="{{ route('turmas.update', $team->id) }}" method="post" enctype="multipart/form-data">
+              @csrf
               @method('put')
               @include('teams.form')
           </form>

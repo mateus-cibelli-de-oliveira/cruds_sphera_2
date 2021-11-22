@@ -11,7 +11,6 @@ Turma
     </div>
 
     <div class="d-flex justify-content-center">
-
         <table class="mt-4">
             <thead>
                 <tr class="whitespace-no-wrap border-b border-gray-800 text-sm leading-10">
@@ -30,14 +29,22 @@ Turma
                     <td class="px-6 px-md-5 py-4">
                         {{ $team->number }}
                     </td>
+                    <td class="px-6 px-md-5 py-4">
+                        @if (isset($rooms))
+                            @if (count($rooms))
+                                <span value="{{ $room->id }}">{{ $room->name }}</span>
+                            @endif
+                        @endif
+                    </td>
                     <td class="px-6 px-md-5 py-4 text-sm leading-5">
                         <a class="nav-link" href="{{ route('turmas.destroy', $team->id) }}">Deletar</a>
                     </td>
                 </tr>
             </tbody>
         </table>
-
     </div>
 
-
+    <div class="d-flex justify-content-center py-4">
+        <a class="btn btn-primary" href="{{ route('turmas.index') }}" role="button">Voltar</a>
+    </div>
 @endsection

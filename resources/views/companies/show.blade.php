@@ -11,7 +11,6 @@ Empresa
     </div>
 
     <div class="d-flex justify-content-center">
-
         <table class="mt-4">
             <thead>
                 <tr class="whitespace-no-wrap border-b border-gray-800 text-sm leading-10">
@@ -40,7 +39,9 @@ Empresa
                 </tr>
             </tbody>
         </table>
-
     </div>
 
+    <div class="d-flex justify-content-center py-4">
+        <a class="btn btn-primary" href="{{ route('empresas.index') }}" role="button">Voltar</a>
+    </div>
 @endsection

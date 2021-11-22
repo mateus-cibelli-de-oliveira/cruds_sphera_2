@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Room;
 use App\Models\Team;
 
 class TeamController extends Controller
@@ -25,7 +26,8 @@ class TeamController extends Controller
      */
     public function create()
     {
-        return view('teams.create');
+        $rooms = Room::all();
+        return view('teams.create', compact('rooms'));
     }
 
     /**
@@ -61,8 +63,15 @@ class TeamController extends Controller
      */
     public function edit($id)
     {
-        $team = Team::where('id', $id)->first();
-        return view('teams.edit', compact('team', 'id'));
+        $room = Room::all();
+        return view('teams.edit', compact('room'));
+
+        $team = Team::all();
+
+        if (!$team = $room->team)
+
+        echo "Nome: {$team->name}";
+        
     }
 
     /**

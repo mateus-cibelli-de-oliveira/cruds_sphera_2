@@ -12,6 +12,7 @@ Atualizar Empresa
       </div>
       <div class="d-flex justify-content-center">
           <form action="{{ route('empresas.update', $company->id) }}" method="post" enctype="multipart/form-data">
+              @csrf  
               @method('put')
               @include('companies.form')
           </form>

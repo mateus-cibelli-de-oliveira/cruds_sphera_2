@@ -12,6 +12,7 @@ Atualizar Usuário
       </div>
       <div class="d-flex justify-content-center pt-2">
           <form action="{{ route('usuarios.update', $user->id) }}" method="post" enctype="multipart/form-data">
+              @csrf
               @method('put')
               @include('users.form')
           </form>

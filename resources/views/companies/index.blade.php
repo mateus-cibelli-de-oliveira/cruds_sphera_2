@@ -54,8 +54,12 @@ Página Principal
                             <a class="nav-link" href="{{ route('empresas.show', $company->id) }}">Exibir Empresa</a>
                         </td>    
                         <td class="px-6 px-md-5 text-sm leading-5 d-block">
-                            <a class="nav-link" href="{{ route('empresas.destroy', $company->id) }}">Deletar</a>
+                            <button class="nav-link" type="submit" form="delete{{$company->id}}" name="delete" value="{{ $company->id }}">Deletar</button>
                         </td>
+                        <form method="post" action="{{ route('empresas.destroy', $company->id) }}" id="delete{{$company->id}}" class="form-delete-data">
+                            @csrf
+                            {{ method_field('DELETE') }}
+                        </form>
                     </tr>
                 @endforeach
             </tbody>

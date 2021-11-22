@@ -12,8 +12,9 @@ Atualizar Sala
       </div>
       <div class="d-flex justify-content-center">
           <form action="{{ route('salas.update', $room->id) }}" method="post" enctype="multipart/form-data">
-              @method('put')
-              @include('rooms.form')
+            @csrf    
+            @method('put')
+            @include('rooms.form')
           </form>
       </div>
   </div>

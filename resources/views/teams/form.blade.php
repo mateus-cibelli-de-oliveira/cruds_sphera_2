@@ -10,17 +10,17 @@
         <option>2</option>
         <option>3</option>
     </select>
-    <div class="form-group">
-    <select name="room_id" id="room_id" class="form-control mt-2">
-        <option value="">- Selecione a Sala -</option>
-        @if (isset($rooms))
-            @if (count($rooms))
-                @foreach ($rooms as $room)
-                    <option value="{{ $room->id }}">{{ $room->name }}</option>
-                @endforeach
-            @endif
-        @endif
-    </select>
+    <div class="form-group d-flex">
+        <select class="form-control mt-2">
+            <option value="">- Selecione a Sala -</option>
+                @if ( isset($rooms) )
+                    @if ( count($rooms) )
+                        @foreach ($rooms as $room)
+                            <option value="{{ $room->id }}">{{ $room->name }}</option>
+                        @endforeach
+                    @endif
+                @endif
+        </select>
     </div>
 </div>
 

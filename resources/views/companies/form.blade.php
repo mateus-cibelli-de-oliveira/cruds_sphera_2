@@ -1,3 +1,11 @@
+@if ($errors->any())
+    <ul>
+        @foreach ($errors->all() as $error)
+            <li class="flex justify-center items-center m-1 font-medium py-1 px-2 bg-white rounded-md text-yellow-700 bg-yellow-100 border border-yellow-300">{{ $error }}</li>
+        @endforeach
+    </ul>
+@endif
+
 <div class="form-row">
     <div class="form-group col-md-30">
         <label for="name" class="mt-1">Empresa</label>

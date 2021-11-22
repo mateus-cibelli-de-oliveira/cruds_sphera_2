@@ -61,7 +61,10 @@ class CompanyController extends Controller
      */
     public function edit($id)
     {
-        $company = Company::where('id', $id)->first();
+        if (!$company = Company::find($id)) 
+        {
+            return redirect()->back();
+        }
         return view('companies.edit', compact('company', 'id'));
     }
 

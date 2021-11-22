@@ -1,7 +1,7 @@
 @extends('_partials.app_config')
 
 @section('title')
-Página Principal
+    Página Principal
 @endsection
 
 @section('content')
@@ -30,8 +30,9 @@ Página Principal
             <thead>
                 <tr class="whitespace-no-wrap border-b border-gray-800 text-sm leading-10">
                     <th scope="col" class="px-md-5">Nome</th>
-                    <th scope="col" class="px-md-5">Número</th>
-                    <th scope="col" class="px-md-5">Ações</th>
+                    <th scope="col" class="px-md-5 d-flex mr-4">Número</th>
+                    <th scope="col" class="px-md-5">Sala</th>
+                    <th scope="col" class="px-md-5 d-flex ml-6">Ações</th>
                 </tr>
             </thead>
 
@@ -44,20 +45,21 @@ Página Principal
                         <td class="px-6 px-md-5 py-4">
                             {{ $team->number }}
                         </td>
-                        <select name="room_id" id="room_id" class="form-control mt-2">
-                            <option value="">- Selecione a Sala -</option>
-                            @if (isset($rooms))
-                                @if (count($rooms))
-                                    @foreach ($rooms as $room)
-                                        <option value="{{ $room->id }}">{{ $room->name }}</option>
-                                    @endforeach
-                                @endif
-                            @endif
-                        </select>
-                        <td class="px-6 px-md-5 py-4 text-sm leading-5">
-                            <a class="nav-link" href="{{ route('turmas.edit') }}">Atualizar Dados</a>
-                            <a class="nav-link" href="{{ route('turmas.show') }}">Exibir Turma</a>
-                            <a class="nav-link" href="{{ route('turmas.destroy', $team->id) }}">Deletar</a>
+                        <td class="px-6 px-md-5 py-4">
+                            <span>{{ $team->room->name }}</span>
+                        </td>
+                        <td class="px-6 px-md-5 ml-2 pt-2 text-sm leading-5 d-block">
+                            <a class="nav-link" href="{{ route('turmas.edit', $team->id) }}">Atualizar Dados</a>
+                        </td>
+                        <td class="px-6 px-md-5 ml-2 text-sm leading-5 d-block">
+                            <a class="nav-link" href="{{ route('turmas.show', $team->id) }}">Exibir Turma</a>
+                        </td>
+                        <td class="px-6 px-md-5 ml-2 text-sm leading-5 d-block">
+                            <button class="nav-link" type="submit" form="delete{{$team->id}}" name="delete" value="{{ $team->id }}">Deletar</button>
+                            <form method="post" action="{{ route('turmas.destroy', $team->id) }}" id="delete{{$team->id}}" class="form-delete-data">
+                                @csrf
+                                {{ method_field('DELETE') }}
+                            </form>
                         </td>
                     </tr>
                 @endforeach
