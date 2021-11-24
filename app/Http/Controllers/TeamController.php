@@ -38,8 +38,7 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        $team = $request->all();
-        Team::create($team);
+        $teams = Team::create($request->all());
         return redirect()->route('turmas.index');
     }
 
@@ -63,12 +62,13 @@ class TeamController extends Controller
      */
     public function edit($id)
     {
-        if (!$team = Team::find($id)) 
+        if (!$team = Team::where('id', $id)->first())
         {
             return redirect()->back();
         }
-        return view('teams.edit', compact('team', 'id'));
         
+        if (!$rooms = Room::all());       
+        return view('teams.edit', compact('team', 'rooms', 'id'));
     }
 
     /**

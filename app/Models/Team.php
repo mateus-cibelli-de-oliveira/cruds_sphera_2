@@ -7,7 +7,9 @@ use Illuminate\Database\Eloquent\Model;
 
 class Team extends Model
 {
-    protected $fillable = ['name', 'number','room_id'];
+    protected $fillable = ['name', 'number'];
+
+    protected $attributes = ['room_id' => 1];
 
     public function room()
     {

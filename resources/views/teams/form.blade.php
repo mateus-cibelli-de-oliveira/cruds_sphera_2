@@ -1,6 +1,6 @@
 <div class="form-group mx-sm-3 mb-2">
     <label for="name" class="text-sm">Nome: </label>
-    <input type="text" class="form-control rounded mt-1 uneditable-input outline-none shadow-none" id="name" name="name" placeholder="Ciências Humanas"
+    <input type="text" class="form-control rounded mt-1 uneditable-input outline-none shadow-none" id="name" name="name" placeholder="Digite o nome da turma"
     value="{{ $team->name ?? old('name') }}">
 </div>
 <div class="form-group mx-sm-3 mb-2">
