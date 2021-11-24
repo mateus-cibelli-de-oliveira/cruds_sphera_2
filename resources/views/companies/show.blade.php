@@ -33,15 +33,20 @@ Empresa
                     <td class="px-6 px-md-4 py-4">
                         <span class="d-flex">{{ $company->address }}</span>
                     </td>
-                    <td class="px-6 px-md-5 text-sm leading-5">
-                        <a class="nav-link" href="{{ route('empresas.destroy', $company->id) }}">Deletar</a>
+                    <td class="px-6 px-md-5 text-red-600 text-sm leading-5">
+                        <button class="d-flex ml-4" type="submit" form="delete{{$company->id}}" name="delete" value="{{ $company->id }}">Deletar</button>
                     </td>
+                    <form method="post" action="{{ route('empresas.destroy', $company->id) }}" id="delete{{$company->id}}" class="form-delete-data">
+                        @csrf
+                        {{ method_field('DELETE') }}
+                    </form>
                 </tr>
             </tbody>
+            
         </table>
     </div>
 
     <div class="d-flex justify-content-center py-4">
-        <a class="btn btn-primary" href="{{ route('empresas.index') }}" role="button">Voltar</a>
+        <a class="btn btn-primary outline-none shadow-none" href="{{ route('empresas.index') }}" role="button">Voltar</a>
     </div>
 @endsection

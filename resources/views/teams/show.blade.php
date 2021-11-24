@@ -16,7 +16,8 @@ Turma
                 <tr class="whitespace-no-wrap border-b border-gray-800 text-sm leading-10">
                     <th scope="col" class="px-md-5">Nome</th>
                     <th scope="col" class="px-md-5">Número</th>
-                    <th scope="col" class="d-flex px-md-5 ml-4">Ações</th>
+                    <th scope="col" class="px-md-5">Sala</th>
+                    <th scope="col" class="px-md-5">Ações</th>
                 </tr>
             </thead>
 
@@ -29,22 +30,22 @@ Turma
                     <td class="px-6 px-md-5 py-4">
                         {{ $team->number }}
                     </td>
-                    <td class="px-6 px-md-5 py-4">
-                        @if (isset($rooms))
-                            @if (count($rooms))
-                                <span value="{{ $room->id }}">{{ $room->name }}</span>
-                            @endif
-                        @endif
+                    <td class="ml-4 px-6 px-md-5 py-4">
+                        <span>{{ $team->room->name }}</span>
                     </td>
-                    <td class="px-6 px-md-5 py-4 text-sm leading-5">
-                        <a class="nav-link" href="{{ route('turmas.destroy', $team->id) }}">Deletar</a>
+                    <td class="px-6 px-md-5 py-4 text-red-600 text-sm leading-5">
+                        <button class="d-flex" type="submit" form="delete{{$team->id}}" name="delete" value="{{ $team->id }}">Deletar</button>
                     </td>
+                    <form method="post" action="{{ route('turmas.destroy', $team->id) }}" id="delete{{$team->id}}" class="form-delete-data">
+                        @csrf
+                        {{ method_field('DELETE') }}
+                    </form>
                 </tr>
             </tbody>
         </table>
     </div>
 
     <div class="d-flex justify-content-center py-4">
-        <a class="btn btn-primary" href="{{ route('turmas.index') }}" role="button">Voltar</a>
+        <a class="btn btn-primary outline-none shadow-none" href="{{ route('turmas.index') }}" role="button">Voltar</a>
     </div>
 @endsection

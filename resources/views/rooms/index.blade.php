@@ -15,6 +15,21 @@ Página Principal
                         <a class="nav-link" href="{{ route('salas.create') }}">Criar nova Sala</a>
                     </li>
                 </ul>
+                <ul class="navbar-nav ml-auto"> 
+                    <div class="dropdown">
+                          <a class="nav-link btn btn-secondary bg-transparent border-0 dropdown-toggle" role="button"
+                          id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                          {{ Auth::user()->name }}
+                          </a>
+                          <div class="dropdown-menu mt-10 ml-10 pl-2 opacity-75 bg-gray-500" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item d-flex text-white bg-transparent text-sm" href="{{ route('logout') }}" style="color:#c7c8bf;" onclick="event.preventDefault(); 
+                            document.getElementById('logout-form').submit();">Logout</a>
+                          </div>
+                    </div>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: block;">
+                        @csrf
+                    </form>
+                </ul>
             </div>
         </div>
     </nav>
@@ -31,7 +46,7 @@ Página Principal
                 <tr class="whitespace-no-wrap border-b border-gray-800 text-sm leading-10">
                     <th scope="col" class="px-md-5">Nome</th>
                     <th scope="col" class="px-md-5">Número</th>
-                    <th scope="col" class="px-md-5">Ações</th>
+                    <th scope="col" class="px-md-5 d-flex ml-4">Ações</th>
                 </tr>
             </thead>
 
@@ -47,7 +62,7 @@ Página Principal
                         <td class="px-6 px-md-5 py-4 text-sm leading-5">
                             <a class="nav-link" href="{{ route('salas.edit', $room->id) }}">Atualizar Dados</a>
                             <a class="nav-link" href="{{ route('salas.show', $room->id) }}">Exibir Sala</a>
-                            <button class="nav-link" type="submit" form="delete{{$room->id}}" name="delete" value="{{ $room->id }}">Deletar</button>
+                            <button class="nav-link text-red-600" type="submit" form="delete{{$room->id}}" name="delete" value="{{ $room->id }}">Deletar</button>
                             <form method="post" action="{{ route('salas.destroy', $room->id) }}" id="delete{{$room->id}}" class="form-delete-data">
                                 @csrf
                                 {{ method_field('DELETE') }}

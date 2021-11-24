@@ -86,9 +86,7 @@ class RoomController extends Controller
      */
     public function destroy($id)
     {
-        if (!$room = Room::find($id))
-        $room->delete();
-
+        Room::find($id)->delete();
         return redirect()->route('salas.index');
     }
 }

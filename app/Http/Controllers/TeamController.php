@@ -63,14 +63,11 @@ class TeamController extends Controller
      */
     public function edit($id)
     {
-        $room = Room::all();
-        return view('teams.edit', compact('room'));
-
-        $team = Team::all();
-
-        if (!$team = $room->team)
-
-        echo "Nome: {$team->name}";
+        if (!$team = Team::find($id)) 
+        {
+            return redirect()->back();
+        }
+        return view('teams.edit', compact('team', 'id'));
         
     }
 
@@ -95,9 +92,7 @@ class TeamController extends Controller
      */
     public function destroy($id)
     {
-        if (!$team = Team::find($id))
-        $team->delete();
-
+        Team::find($id)->delete();
         return redirect()->route('turmas.index');
     }
 }

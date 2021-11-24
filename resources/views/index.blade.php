@@ -25,7 +25,12 @@
             @if (Route::has('login'))
                 <div class="hidden fixed top-0 right-0 px-6 py-4 sm:block">
                     @auth
-                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 nounderline mr-2">Home</a>
+                        <a href="{{ url('/home') }}" class="text-sm text-gray-700 dark:text-gray-500 mr-2">Home</a>
+                        <a class="dropdown-item text-sm" href="{{ route('logout') }}" style="color:#b5b6ae;" onclick="event.preventDefault(); 
+                            document.getElementById('logout-form').submit();">Sair</a>
+                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: block;">
+                            @csrf
+                        </form>
                     @else
                         <a href="{{ route('login') }}" class="text-sm text-gray-700 dark:text-gray-500 nounderline mr-2">Log in</a>
 

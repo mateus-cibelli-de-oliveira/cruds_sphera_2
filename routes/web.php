@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\HomeController;
 use App\Http\Controllers\RoomController;
 use App\Http\Controllers\TeamController;
 use App\Http\Controllers\CompanyController;
@@ -17,12 +18,16 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Route::middleware(['auth'])->group(function() {
 
-Route::resource('/empresas', CompanyController::class);
+    Route::get('/home', [HomeController::class, 'index'])->name('home');
 
-Route::resource('/salas', RoomController::class);
+    Route::resource('/empresas', CompanyController::class);
 
-Route::resource('/turmas', TeamController::class);
+    Route::resource('/salas', RoomController::class);
 
-Route::resource('/usuarios', UserController::class);
+    Route::resource('/turmas', TeamController::class);
+
+    Route::resource('/usuarios', UserController::class);
+
+});

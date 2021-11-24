@@ -17,7 +17,7 @@ Usuário
                     <th scope="col" class="px-md-5">Nome</th>
                     <th scope="col" class="px-md-4">E-mail</th>
                     <th scope="col" class="px-md-4">CPF</th>
-                    <th scope="col" class="d-flex px-md-5 ml-4">Ações</th>
+                    <th scope="col" class="px-md-5">Ações</th>
                 </tr>
             </thead>
 
@@ -32,15 +32,19 @@ Usuário
                     <td class="px-6 px-md-4 py-4">
                         {{ $user->cpf }}
                     </td>
-                    <td class="px-6 px-md-4 py-4 text-sm leading-5">
-                        <a class="nav-link" href="{{ route('usuarios.destroy', $user->id) }}">Deletar</a>
+                    <td class="px-6 px-md-5 py-4 text-red-600 text-sm leading-5">
+                        <button class="d-flex" type="submit" form="delete{{$user->id}}" name="delete" value="{{ $user->id }}">Deletar</button>
                     </td>
+                    <form method="post" action="{{ route('usuarios.destroy', $user->id) }}" id="delete{{$user->id}}" class="form-delete-data">
+                        @csrf
+                        {{ method_field('DELETE') }}
+                    </form>
                 </tr>
             </tbody>
         </table>
     </div>
 
     <div class="d-flex justify-content-center py-4">
-      <a class="btn btn-primary" href="{{ route('usuarios.index') }}" role="button">Voltar</a>
+      <a class="btn btn-primary outline-none shadow-none" href="{{ route('usuarios.index') }}" role="button">Voltar</a>
     </div>
 @endsection

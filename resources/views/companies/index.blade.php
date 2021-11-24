@@ -15,6 +15,21 @@ Página Principal
                         <a class="nav-link" href="{{ route('empresas.create') }}">Criar nova Empresa</a>
                     </li>
                 </ul>
+                <ul class="navbar-nav ml-auto"> 
+                    <div class="dropdown">
+                          <a class="nav-link btn btn-secondary bg-transparent border-0 dropdown-toggle" role="button"
+                          id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+                          {{ Auth::user()->name }}
+                          </a>
+                          <div class="dropdown-menu mt-10 ml-10 pl-2 opacity-75 bg-gray-500" aria-labelledby="dropdownMenuLink">
+                            <a class="dropdown-item d-flex text-white bg-transparent text-sm" href="{{ route('logout') }}" style="color:#c7c8bf;" onclick="event.preventDefault(); 
+                            document.getElementById('logout-form').submit();">Logout</a>
+                          </div>
+                    </div>
+                    <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: block;">
+                        @csrf
+                    </form>
+                </ul>
             </div>
         </div>
     </nav>
@@ -54,7 +69,7 @@ Página Principal
                             <a class="nav-link" href="{{ route('empresas.show', $company->id) }}">Exibir Empresa</a>
                         </td>    
                         <td class="px-6 px-md-5 text-sm leading-5 d-block">
-                            <button class="nav-link" type="submit" form="delete{{$company->id}}" name="delete" value="{{ $company->id }}">Deletar</button>
+                            <button class="nav-link text-red-600" type="submit" form="delete{{$company->id}}" name="delete" value="{{ $company->id }}">Deletar</button>
                         </td>
                         <form method="post" action="{{ route('empresas.destroy', $company->id) }}" id="delete{{$company->id}}" class="form-delete-data">
                             @csrf

@@ -89,9 +89,7 @@ class CompanyController extends Controller
      */
     public function destroy($id)
     {
-        if (!$company = Company::find($id))
-        $company->delete();
-
+        Company::find($id)->delete();
         return redirect()->route('empresas.index');
     }
 }
