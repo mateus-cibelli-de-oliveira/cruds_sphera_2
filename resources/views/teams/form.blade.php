@@ -11,7 +11,7 @@
         <option>3</option>
     </select>
     <div class="form-group d-flex">
-        <select class="form-control mt-2 uneditable-input outline-none shadow-none">
+        <select name="room_id" name="room_id" class="form-control mt-2 uneditable-input outline-none shadow-none">
             <option value="">- Selecione a Sala -</option>
                 @if ( isset($rooms) )
                     @if ( count($rooms) )

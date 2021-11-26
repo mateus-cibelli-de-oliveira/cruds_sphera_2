@@ -11,6 +11,6 @@ class Room extends Model
 
     public function team()
     {
-        return $this->hasMany(Team::class);
+        return $this->hasMany(Team::class, 'room_id', 'id');
     }
 }

@@ -38,7 +38,7 @@ class TeamController extends Controller
      */
     public function store(Request $request)
     {
-        $teams = Team::create($request->all());
+        Team::create($request->all());
         return redirect()->route('turmas.index');
     }
 
